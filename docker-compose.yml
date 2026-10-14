@@ -34,6 +34,8 @@ services:
       - PORT=3001
     ports:
       - "3001:3001"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       postgres:
         condition: service_healthy
@@ -48,7 +50,7 @@ services:
       dockerfile: Dockerfile
     container_name: proyecto-pdf-web
     ports:
-      - "3002:80"
+      - "80:80"
     depends_on:
       - backend
     networks:
